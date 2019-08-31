@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
@@ -128,7 +128,6 @@ au BufNewFile,BufRead *.py set
     \ tabstop=4
     \ softtabstop=4
     \ shiftwidth=4
-    \ textwidth=79
     \ expandtab
     \ autoindent
     \ fileformat=unix    
@@ -148,6 +147,9 @@ autocmd FileType make set
     \ noexpandtab 
     \ shiftwidth=8 
     \ softtabstop=0
+
+" Close Nerdtree on quitting Vim
+autocmd VimLeave * tabdo NERDTreeClose
 
 " set tagbar to recognize go tags
 au BufNewFile,BufRead *.go
@@ -185,9 +187,9 @@ au BufNewFile,BufRead *.go
 nmap <F8> :TagbarToggle<CR>
 map <C-n> :NERDTreeToggle<CR>
 
-nnoremap <C-Down> <C-W><C-J>
-nnoremap <C-Up> <C-W><C-K>
-nnoremap <C-Right> <C-W><C-L>
-nnoremap <C-Left> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 nnoremap <space> za
