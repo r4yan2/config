@@ -20,8 +20,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'gcmt/taboo.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-syntastic/syntastic'
+
+" Plugin 'nvie/vim-flake8'
+" Plugin 'vim-syntastic/syntastic'
 
 " Plugin 'lervag/vimtex'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -64,25 +65,28 @@ syntax enable
 set number
 
 " set tabs to have 4 spaces
-" set ts=4
+set tabstop=4
+
+" set tab button to insert 4 spaces
+set softtabstop=4
 
 " indent when moving to the next line while writing code
-" set autoindent
+set autoindent
 
 " expand tabs into spaces
-" set expandtab
+set expandtab
 
 " when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
 
 " show a visual line under the cursor's current line
-" set cursorline
+set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
 " smartcase for case insensitive matching
-" set smartcase
+set smartcase
 
 " avoid ycm spawning a window with suggestions
 set completeopt-=preview
@@ -128,11 +132,7 @@ au BufNewFile,BufRead *.py set
     \ tabstop=4
     \ softtabstop=4
     \ shiftwidth=4
-    \ expandtab
-    \ autoindent
     \ fileformat=unix    
-    \ showmatch
-    \ smartcase
     \ foldmethod=indent
     \ foldlevel=99
     \ | let python_highlight_all = 1
@@ -140,6 +140,12 @@ au BufNewFile,BufRead *.py set
 
 au BufNewFile,BufRead *.xml set
     \ tabstop=2
+    \ softtabstop=2
+    \ shitftwidth=2
+ 
+au BufNewFile,BufRead *.html set
+    \ tabstop=2
+    \ softtabstop=2
     \ shitftwidth=2
 
 " stuff to avoid make complaining about indentation
@@ -193,3 +199,5 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 nnoremap <space> za
+
+set t_Co=256
