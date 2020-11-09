@@ -20,9 +20,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'gcmt/taboo.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-" Plugin 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 " Plugin 'vim-syntastic/syntastic'
+" Plugin 'mileszs/ack.vim'
 
 " Plugin 'lervag/vimtex'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -116,8 +116,8 @@ import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
-  activate = os.path.join(project_base_dir, 'bin/activate.py')
-  execfile(activate, dict(__file__=activate))
+  activate = os.path.join(project_base_dir, 'bin/activate_this.py')
+  exec(open(activate).read(), dict(__file__=activate))
 EOF
 endfun
 
@@ -127,11 +127,14 @@ endfun
 au BufNewFile,BufFilePre,BufRead *.md 
     \ set filetype=markdown
 
+au BufNewFile *.md 0r ~/Projects/bufix-wiki/docs/template.md
+
 "" Call everytime we open a python file
 au BufNewFile,BufRead *.py set
     \ tabstop=4
     \ softtabstop=4
     \ shiftwidth=4
+    \ expandtab
     \ fileformat=unix    
     \ foldmethod=indent
     \ foldlevel=99
@@ -147,6 +150,12 @@ au BufNewFile,BufRead *.html set
     \ tabstop=2
     \ softtabstop=2
     \ shitftwidth=2
+    \ shiftwidth=2
+
+au BufNewFile,BufRead *.js set
+    \ tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
 
 " stuff to avoid make complaining about indentation
 autocmd FileType make set
@@ -201,3 +210,11 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <space> za
 
 set t_Co=256
+
+let g:ycm_python_interpreter_path = '.env/bin/python3'
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
